@@ -1,0 +1,32 @@
+<div id="app">
+  <p>
+    {{ message }}
+  </p>
+  <input v-model="message">
+  <hr>
+  <span v-bind:title="message2">
+    Hover your mouse over me for a few seconds
+    to see my dynamically bound title!
+  </span>
+  <hr>
+  <p>{{ message3 }}</p>
+  <button v-on:click="reverseMessage">Reverse Message</button>
+</div>
+
+<script type="module">
+import { ToyVue as Vue } from './toy-vue.js';
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'xixixixix',
+    message2: 'Hi I\'m Vue' + new Date().toLocaleDateString(),
+    message3: 'Hello VueuV',
+  },
+  methods: {
+    reverseMessage: function () {
+      this.message3 = this.message3.split('').reverse().join('')
+    }
+  },
+});
+</script>
